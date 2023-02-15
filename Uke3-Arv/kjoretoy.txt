@@ -1,0 +1,4 @@
+bensin;ab12345;BMW;x5;60;7
+elektrisk;cd54321;Tesla;Model 3;80;5
+elektrisk;2Fast4You;Porsche;Taycan;250;4
+motorsykkel;ef2468;Bugatti;DIAVEL 1260S;90
