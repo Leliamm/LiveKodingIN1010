@@ -1,6 +1,5 @@
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
 import java.util.concurrent.locks.Condition;
 
 public class MonitorStemmesystem {
@@ -21,7 +20,7 @@ public class MonitorStemmesystem {
         stemmesystem.leggTilStemme(parti);
         ikkeTomt.signalAll();
        }finally{
-        las.lock();
+        las.unlock();
        }
     }
 
@@ -36,7 +35,7 @@ public class MonitorStemmesystem {
 
         
        }finally{
-        las.lock();
+        las.unlock();
        }
     }
 
@@ -46,7 +45,7 @@ public class MonitorStemmesystem {
         //kritisk region
         return stemmesystem.tomtForStemmer();
        }finally{
-        las.lock();
+        las.unlock();
        }
     }
 }
