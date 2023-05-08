@@ -5,8 +5,7 @@ import java.util.concurrent.locks.Condition;
 public class MonitorStemmesystem {
     //monitoren håndterer felles resurser
     private Lock las = new ReentrantLock();
-    private Condition ikkeTomt = las.newCondition();
-    
+    private Condition ikkeTomt = las.newCondition();    
     private Stemmesystem stemmesystem;
 
     public MonitorStemmesystem(Stemmesystem stemmesystem){

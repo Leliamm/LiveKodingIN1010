@@ -13,6 +13,7 @@ abstract class Rom {
         return areal;
     }
     public abstract ArrayList<String> hentEgenskaper();
+    
     @Override
     public String toString(){
         String utskrift = "Rom type " +  typeRom() + "\n";
