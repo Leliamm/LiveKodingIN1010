@@ -13,7 +13,7 @@ public abstract class Trikk implements Runnable {
     @Override
     public void run(){
         while(gjeldendeHoldeplass != null){
-            System.out.println("ankommer " + gjeldendeHoldeplass);
+            System.out.println("Trikk " + id + " - ankommer " + gjeldendeHoldeplass);
             gjeldendeHoldeplass = gjeldendeHoldeplass.neste;
             try{
                 Thread.sleep(hastighet);
@@ -21,7 +21,7 @@ public abstract class Trikk implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("Ferdig med å kjøre. ");
+        System.out.println("Trikk "+ id +  " Ferdig med å kjøre. ");
 
     }
 

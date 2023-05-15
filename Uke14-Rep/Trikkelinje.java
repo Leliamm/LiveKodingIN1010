@@ -23,11 +23,12 @@ public class Trikkelinje {
         String [] info = scanner.nextLine().split(";");
         linjenr = Integer.parseInt(info[0]);
         endeHoldeplass = info[1];
+
         Holdeplass forrige = null;
         while(scanner.hasNextLine()){
             String navn = scanner.nextLine();
             Holdeplass ny = new Holdeplass(navn);
-            System.out.println(navn);
+            // System.out.println(navn);
 
             if(forste == null){
                 forste = ny;
@@ -37,33 +38,38 @@ public class Trikkelinje {
                 ny.forrige = forrige;
             }
             forrige = ny;
-
         }
         siste = forrige; //etter while fordi når while er ferdig har vi tilgagng til den siste
     }
 
-    public String hentUtRute (String fra, String til){
+    public String skrivUtRute (String fra, String til){
         String rute = "";
         Holdeplass peker = forste;
+        int antall = 0;
 
         //finne fra holdeplass
         while (peker != null){
             if (peker.hentNavn().equals(fra)){
-                while(peker != null){
+                while(peker != null && peker.neste != null){
                     //finner til holdeplass
                     if(peker.hentNavn().equals(til)){
-                        return "Fra " + fra + ": "+ rute;
+                        return "Fra " + fra +  "(" + antall + " stopp):"+ rute;
                     }
+                    
                     peker = peker.neste;
                     rute += "-> " + peker.hentNavn();
                     
+                    antall ++;
+                    
                 }
             }
+            peker = peker.neste;
             
         }
         return "Fant ikke holdeplass";
 
     }
+
 
     public int antallStoppFra(Holdeplass fra, Holdeplass til, int antall){
         if(fra == null){//finner ikke fra
@@ -88,16 +94,16 @@ public class Trikkelinje {
 
     //allternativ:
 
-    public Holdeplass hentHoldeplassFraSiste(String navn){
-        Holdeplass peker = siste;
-        while (peker != null){
-            if(peker.hentNavn().equals(navn)){
-                return peker;
-            }
-            peker = peker.forrige;
-        }
-        return null; //hvis den ikke finner holdeplassen
-    }
+    // public Holdeplass hentHoldeplassFraSiste(String navn){
+    //     Holdeplass peker = siste;
+    //     while (peker != null){
+    //         if(peker.hentNavn().equals(navn)){
+    //             return peker;
+    //         }
+    //         peker = peker.forrige;
+    //     }
+    //     return null; //hvis den ikke finner holdeplassen
+    // }
 
 
     public void settForste(Holdeplass h){
@@ -107,8 +113,8 @@ public class Trikkelinje {
         return forste;
     }
 
-    @Override
-    public String toString(){
-        return "Linnje: " + linjenr + " " + this.endeHoldeplass;
-    }
+    // @Override
+    // public String toString(){
+    //     return "Linnje: " + linjenr + " " + this.endeHoldeplass;
+    // }
 }

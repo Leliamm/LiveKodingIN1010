@@ -12,6 +12,6 @@ public class Holdeplass{
 
     @Override
     public String toString(){
-        return "Holdepass: " + this.navn;
+        return "Holdeplass: " + this.navn;
     }
 }
